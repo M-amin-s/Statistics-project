@@ -1,5 +1,5 @@
 
-#section1
+#section1 
 rgenerator <- function(){
   #TODO
   return(runif(1,min=1,max=100))
@@ -15,5 +15,33 @@ dugen <- function(min, max){
 #step3
 cugen <- function(){
   return(dugen(0,1))
+}
+
+
+
+#section6
+expgen <- function(lambda){
+  #TODO
+  return(0)
+}
+
+#section7
+gagen <- function(lambda, k){
+  result <- 0
+  for (i in 1:(k-1)){
+    result <- result + expgen(lambda)
+  }
+  return(result)
+}
+
+#section8
+pogen <- function(lambda, t){
+  result <- -1
+  time <- 0
+  while(time < t){
+    result <- result + 1
+    time <- time + expgen(lambda)
+  }
+  return(result)
 }
 
