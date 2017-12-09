@@ -16,6 +16,17 @@ cugen <- function(){
   return(dugen(0,1))
 }
 
+#section3
+
+
+#section4
+bigen <-function(p,n){
+  x <- 0
+  for(i in 1:n)
+    x <- x + brgen(p)
+}
+
+#section5
 
 
 #section6
