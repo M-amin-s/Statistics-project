@@ -1,4 +1,3 @@
-
 #section1 
 rgenerator <- function(){
   #TODO
@@ -21,8 +20,7 @@ cugen <- function(){
 
 #section6
 expgen <- function(lambda){
-  #TODO
-  return(0)
+  (-1/lambda)*log(cugen())
 }
 
 #section7
