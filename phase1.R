@@ -43,3 +43,10 @@ pogen <- function(lambda, t){
   return(result)
 }
 
+#section9
+nogen <- function(u,s){
+  s <- sqrt(s)
+  x <- pogen(10,10)
+  x <- x * s / 10
+  x <- x + (u - 10 * s)
+}
