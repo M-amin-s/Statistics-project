@@ -5,19 +5,21 @@ rgenerator <- function(){
 }
 
 #section2
-#step2
+  #step2
 dugen <- function(min, max){
   result <- rgenerator()
   result <- (result%%(max - min)) + min
   return(result)
 }
-#step3
+  #step3
 cugen <- function(){
   return(dugen(0,1))
 }
 
 #section3
-
+brgen <- function(p){
+  
+}
 
 #section4
 bigen <-function(p,n){
@@ -27,7 +29,9 @@ bigen <-function(p,n){
 }
 
 #section5
-
+gegen <- function(p){
+  
+}
 
 #section6
 expgen <- function(lambda){
