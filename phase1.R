@@ -1,3 +1,5 @@
+library(ggplot2)
+
 #section1 
 rgenerator <- function(){
   #TODO
@@ -64,4 +66,50 @@ nogen <- function(u,s){
   x <- pogen(10,10)
   x <- x * s / 10
   x <- x + (u - 10 * s)
+}
+
+#section10
+plotter <- function(func,args){
+  y <- c()
+  vec <- 1:1000
+  for(i in vec)
+    y <- c(y,do.call(func,args = args))
+  qplot(x = vec,y = y)  
+}
+
+duplot <- function(min,max){
+  plotter(dugen,list(min,max))
+}
+
+cuplot <- function(){
+  plotter(cugen,list())
+}
+
+brplot <- function(p){
+  plotter(brgen,list(p))
+}
+
+biplot <- function(p,n){
+  plotter(bigen,list(p,n))
+}
+
+geplot <- function(p){
+  plotter(gegen,list(p))
+}
+
+expplot <- function(lambda){
+  plotter(expgen,list(lambda))
+}
+
+
+gaplot <- function(lambda,k){
+  plotter(gagen,list(lambda,k))
+}
+
+poplot <- function(lambda,t){
+  plotter(pogen,list(lambda,t))
+}
+
+noplot <- function(u,s){
+  plotter(nogen,list(u,s))
 }
