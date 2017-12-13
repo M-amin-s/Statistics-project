@@ -36,8 +36,8 @@ rgenerator <- function(){
 #section2
   #step2
 dugen <- function(min, max){
-  result <- rgenerator()
-  result <- (result%%(max - min)) + min
+  result <- abs(rgenerator())
+  result <- ((result*(max - min)) / (2**32 - 1)) + min
   return(result)
 }
   #step3
