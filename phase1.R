@@ -20,7 +20,12 @@ cugen <- function(){
 
 #section3
 brgen <- function(p){
-  
+  rand = cugen()
+  if(rand <= p){
+    return(1)
+  }else{
+    return(0)
+  }
 }
 
 #section4
@@ -28,11 +33,18 @@ bigen <-function(p,n){
   x <- 0
   for(i in 1:n)
     x <- x + brgen(p)
+  x
 }
 
 #section5
 gegen <- function(p){
+  i <- 0
+  while(brgen(p = p) != 1){}
   
+  while(brgen(p = p) != 1){
+    i <- i + 1
+  }
+  return(i)
 }
 
 #section6
@@ -74,7 +86,8 @@ plotter <- function(func,args){
   vec <- 1:1000
   for(i in vec)
     y <- c(y,do.call(func,args = args))
-  qplot(x = vec,y = y)  
+  #qplot(x = vec,y = y)
+  qplot(y, geom = "histogram", binwidth = 0.1,fill=I("blue"),col=I("black"))
 }
 
 duplot <- function(min,max){
