@@ -1,9 +1,36 @@
 library(ggplot2)
 
 #section1 
+int_to_unit <- function (x, adjustment=2^32) {
+  x <- as.numeric(x)
+  signs <- sign(x)
+  x[signs < 0] <- x[signs < 0] + adjustment
+  x
+}
+
+t <- 0
+x <- 123456789
+y <- 362436069
+z <- 521288629
+w <- 88675123
+v <- 5783321
+d <- 6615241
+
 rgenerator <- function(){
-  #TODO
-  return(runif(1,min=1,max=100))
+  
+  t <<- (bitwXor(x, bitwShiftR(x, 2)))
+  x <<- y
+  y <<- z
+  z <<- w
+  w <<- v
+  v <<- bitwXor((bitwXor(v, bitwShiftL(v, 4))), bitwXor(t, bitwShiftL(t, 1)))
+  
+  d <- d + 362437
+  res <- d + v
+  if(res < 0)
+    res <- int_to_unit(res)
+  
+  return(res)
 }
 
 #section2
