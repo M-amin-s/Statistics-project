@@ -55,7 +55,7 @@ expgen <- function(lambda){
 #section7
 gagen <- function(lambda, k){
   result <- 0
-  for (i in 1:(k-1)){
+  for (i in 1:k){
     result <- result + expgen(lambda)
   }
   return(result)
