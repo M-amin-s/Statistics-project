@@ -113,8 +113,9 @@ plotter <- function(func,args){
   vec <- 1:1000
   for(i in vec)
     y <- c(y,do.call(func,args = args))
-  #qplot(x = vec,y = y)
-  qplot(y, geom = "histogram", binwidth = 0.1,fill=I("blue"),col=I("black"))
+  print(qplot(x = vec,y = y))
+  print(qplot(y, geom = "histogram", binwidth = 0.1,fill=I("blue"),col=I("black"),
+        xlim=c(floor(min(y)),ceiling(max(y)))))
 }
 
 duplot <- function(min,max){
