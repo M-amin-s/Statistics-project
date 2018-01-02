@@ -154,3 +154,48 @@ poplot <- function(lambda,t){
 noplot <- function(u,s){
   plotter(nogen,list(u,s))
 }
+
+#section 3.3
+
+find_uiniform <- function(string){
+  nums <- as.numeric(unlist(strsplit(string, " ")))
+  return(c(1/(max(nums) - min(nums)), min(nums), max(nums))) #P a b
+}
+
+find_bernouli <- function(string){
+  nums <- as.numeric(unlist(strsplit(string, " ")))
+  return(c(mean(nums), 1 - mean(nums))) #P 1-P
+}
+
+find_binomial <- function(n ,string){
+  n <- as.numeric(n)
+  nums <- as.numeric(unlist(strsplit(string, " ")))
+  return(c(mean(nums) / n, 1 - mean(nums) / n)) #P 1-P
+}
+
+find_geometric <- function(string){
+  nums <- as.numeric(unlist(strsplit(string, " ")))
+  return(c(1 / mean(nums), 1 - 1 / mean(nums))) #P 1-P
+}
+
+find_exponential <- function(string){
+  nums <- as.numeric(unlist(strsplit(string, " ")))
+  return(1 / mean(nums)) #lambda
+}
+
+find_gamma <- function(string){
+  nums <- as.numeric(unlist(strsplit(string, " ")))
+  s <- log(mean(nums)) - mean(log(nums))
+  k <- (3 - s + sqrt((s-3)**2 + 24 * s)) / (12 * s)
+  return(c(k / mean(nums) , k)) #lambda k
+}
+
+find_poisson <- function(string){
+  nums <- as.numeric(unlist(strsplit(string, " ")))
+  return(mean(nums)) #lambda
+}
+
+find_normal <- function(string){
+  nums <- as.numeric(unlist(strsplit(string, " ")))
+  return(c(mean(nums), var(nums))) #mean var
+}
