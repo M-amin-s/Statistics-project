@@ -169,9 +169,10 @@ find_bernouli <- function(string){
   return(c(mean(nums), 1 - mean(nums))) #P 1-P
 }
 
-find_binomial <- function(n ,string){
-  n <- as.numeric(n)
+find_binomial <- function(string){
   nums <- as.numeric(unlist(strsplit(string, " ")))
+  n <- nums[1]
+  nums <- nums[2:length(nums)]
   return(c(mean(nums) / n, 1 - mean(nums) / n)) #P 1-P
 }
 
