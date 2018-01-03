@@ -2,13 +2,11 @@
 % Please edit documentation in R/phase1.R
 \name{rgenerator}
 \alias{rgenerator}
-\title{rgenerator
-This function gives you a number from 0 to 2^32-1. It uses xorwow algorithm.}
+\title{rgenerator}
 \usage{
 rgenerator()
 }
 \description{
-rgenerator
 This function gives you a number from 0 to 2^32-1. It uses xorwow algorithm.
 }
 \author{

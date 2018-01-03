@@ -2,8 +2,7 @@
 % Please edit documentation in R/phase1.R
 \name{nogen}
 \alias{nogen}
-\title{nogen
-This function gives you a number which follows normal distribution. It uses poisson distribution function (pogen (10, 10)) to make normal distributed numbers. It is calculated by (x * sqrt(s) / 10) + ( u - 10 * sqrt(s))}
+\title{nogen}
 \usage{
 nogen(u, s)
 }
@@ -13,8 +12,10 @@ nogen(u, s)
 \item{s}{is the variance}
 }
 \description{
-nogen
 This function gives you a number which follows normal distribution. It uses poisson distribution function (pogen (10, 10)) to make normal distributed numbers. It is calculated by (x * sqrt(s) / 10) + ( u - 10 * sqrt(s))
+}
+\seealso{
+dugen(), cugen(), brgen(), bigen(), gegen(), expgen(), gagen(), pogen()
 }
 \author{
 Ali Ehteshami

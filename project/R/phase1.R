@@ -1,6 +1,4 @@
 library(ggplot2)
-library("devtools")
-library(roxygen2)
 
 #section1 
 int_to_unit <- function (x, adjustment=2^32) {
@@ -20,11 +18,12 @@ d <- 6615241
 
 
 #' rgenerator
+#' 
 #' This function gives you a number from 0 to 2^32-1. It uses xorwow algorithm.
 #' 
 #' @usage rgenerator()
 #' @author AmirHossein Motameni
-#' 
+
 
 rgenerator <- function(){
   
@@ -51,11 +50,34 @@ dugen <- function(min, max){
   return(result)
 }
 #step3
+
+#' cugen
+#' 
+#' generate uniform random numbers between 0 and 1, using function dugen(a,b) which taking the two integer numbers as input and generates random numbers uniformly distributed between two integer inputs.
+#' 
+#' @usage cugen()
+#' @author MohammadAmin Salarkia
+#' @example cugen()
+#' @seealso dugen(), cugen(), brgen(), bigen(), gegen(), expgen(), gagen(), pogen(), nogen()
+#' related functions: dugen
+
 cugen <- function(){
   return(dugen(0,1))
 }
 
 #section3
+
+#' brgen
+#' 
+#' Bernoulli distribution is one the most simple as well as famous distributions. In each Bernoulli trial there are two possible outcomes, namely success or failure, for the probability of success equal to p, the probability of failure is 1 ??? p.
+#' 
+#' @usage brgen(p)
+#' @param p is the probability
+#' @author Reza Mousapour
+#' @example brgen(0, 2) 
+#' @seealso dugen(), cugen(), gegen(), expgen(), gagen(), pogen(), nogen(), bigen()
+
+
 brgen <- function(p){
   rand = cugen()
   if(rand <= p){
@@ -68,6 +90,7 @@ brgen <- function(p){
 #section4
 
 #' bigen
+#' 
 #' A binomial random variable can be seen as the result of repeated Bernoulli Trials. This function gives you a number which follows binomial distribution. It uses bernoulli distribution function (bergen (p)) to make binomial numbers.
 #' 
 #' @usage bigen(p, n)
@@ -76,7 +99,7 @@ brgen <- function(p){
 #' @author AmirHossein Motameni
 #' @example bigen(0, 5, 10)
 #' 
-#'
+#' @seealso dugen(), cugen(), brgen(), gegen(), expgen(), gagen(), pogen(), nogen()
 
 bigen <-function(p,n){
   x <- 0
@@ -86,6 +109,18 @@ bigen <-function(p,n){
 }
 
 #section5
+
+#' gegen
+#' 
+#' The number of failures in Bernoulli trials, between two wins, follows the geometric distributions. 
+#' 
+#' @usage gegen(p)
+#' @param p is the probability
+#' @author Reza Mousapour
+#' @example gegen(0, 2)
+#' @seealso dugen(), cugen(), brgen(), bigen(), gegen(), expgen(), gagen(), pogen(), nogen()
+#' related functions: brgen
+
 gegen <- function(p){
   i <- 0
   while(brgen(p = p) != 1){}
@@ -100,6 +135,7 @@ gegen <- function(p){
 
 
 #' expgen
+#' 
 #' Exponential distribution is a popular distribution which is used to model waiting times and memoryless processes. This function gives you a number which follows exponential distribution. It uses uniform distribution function (cugen ()) to make exponential distributed numbers. It is calculated by 1/lambda*log(x).
 #' 
 #' @usage expgen(lambda)
@@ -107,12 +143,27 @@ gegen <- function(p){
 #' @author Ali Ehteshami
 #' @example expgen(0, 1)
 #' 
+#' @seealso dugen(), cugen(), brgen(), bigen(), gegen(), gagen(), pogen(), nogen()
 
 expgen <- function(lambda){
   (-1/lambda)*log(cugen())
 }
 
 #section7
+
+#' gagen
+#' 
+#' Summation of k i.i.d exponential random variables leads to a gamma distributed random variable. 
+#' 
+#' @usage gagen(theta, k)
+#' @param Theta is a float number as the parameter of the underlying exponential distribution 
+#' @param k is an integer
+#' @author MohammadAmin Salarkia
+#' @example gagen(2, 3)
+#' @seealso dugen(), cugen(), brgen(), bigen(), gegen(), expgen(), gagen(), pogen(), nogen()
+#' related functions: expgen
+
+
 gagen <- function(lambda, k){
   result <- 0
   for (i in 1:k){
@@ -122,6 +173,20 @@ gagen <- function(lambda, k){
 }
 
 #section8
+
+#' pogen
+#' 
+#' If an exponentially distributed variable is modeled as the waiting time before an arrival, the Poisson distributed variable can be modeled as the number of arrivals during a period of time of length t. 
+#' 
+#' @usage pogen(lambda, t)
+#' @param lambda is a float number as the parameter of the underlying exponential distribution
+#' @param t is a float as the length of time interval.
+#' @author MohammadAmin Salarkia
+#' @example pogen(4, 2)
+#' @seealso dugen(), cugen(), brgen(), bigen(), gegen(), expgen(), gagen(), pogen(), nogen() 
+#' related functions: expgen
+
+
 pogen <- function(lambda, t){
   result <- -1
   time <- 0
@@ -135,6 +200,7 @@ pogen <- function(lambda, t){
 #section9
 
 #' nogen
+#' 
 #' This function gives you a number which follows normal distribution. It uses poisson distribution function (pogen (10, 10)) to make normal distributed numbers. It is calculated by (x * sqrt(s) / 10) + ( u - 10 * sqrt(s))
 #' 
 #' @usage nogen(u, s)
@@ -143,6 +209,7 @@ pogen <- function(lambda, t){
 #' @author Ali Ehteshami
 #' @example nogen(10, 4)
 #' 
+#' @seealso dugen(), cugen(), brgen(), bigen(), gegen(), expgen(), gagen(), pogen()
 
 nogen <- function(u,s){
   s <- sqrt(s)

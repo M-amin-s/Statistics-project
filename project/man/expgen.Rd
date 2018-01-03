@@ -2,14 +2,15 @@
 % Please edit documentation in R/phase1.R
 \name{expgen}
 \alias{expgen}
-\title{expgen
-Exponential distribution is a popular distribution which is used to model waiting times and memoryless processes. This function gives you a number which follows exponential distribution. It uses uniform distribution function (cugen ()) to make exponential distributed numbers. It is calculated by 1/lambda*log(x).}
+\title{expgen}
 \usage{
 expgen(lambda)
 }
 \description{
-expgen
 Exponential distribution is a popular distribution which is used to model waiting times and memoryless processes. This function gives you a number which follows exponential distribution. It uses uniform distribution function (cugen ()) to make exponential distributed numbers. It is calculated by 1/lambda*log(x).
+}
+\seealso{
+dugen(), cugen(), brgen(), bigen(), gegen(), gagen(), pogen(), nogen()
 }
 \author{
 Ali Ehteshami

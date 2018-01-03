@@ -2,8 +2,7 @@
 % Please edit documentation in R/phase1.R
 \name{bigen}
 \alias{bigen}
-\title{bigen
-A binomial random variable can be seen as the result of repeated Bernoulli Trials. This function gives you a number which follows binomial distribution. It uses bernoulli distribution function (bergen (p)) to make binomial numbers.}
+\title{bigen}
 \usage{
 bigen(p, n)
 }
@@ -13,8 +12,10 @@ bigen(p, n)
 \item{n}{is the number of times you want to repeat the bernoulli trial.}
 }
 \description{
-bigen
 A binomial random variable can be seen as the result of repeated Bernoulli Trials. This function gives you a number which follows binomial distribution. It uses bernoulli distribution function (bergen (p)) to make binomial numbers.
+}
+\seealso{
+dugen(), cugen(), brgen(), gegen(), expgen(), gagen(), pogen(), nogen()
 }
 \author{
 AmirHossein Motameni

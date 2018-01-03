@@ -50,11 +50,34 @@ dugen <- function(min, max){
   return(result)
 }
 #step3
+
+#' cugen
+#' 
+#' generate uniform random numbers between 0 and 1, using function dugen(a,b) which taking the two integer numbers as input and generates random numbers uniformly distributed between two integer inputs.
+#' 
+#' @usage cugen()
+#' @author MohammadAmin Salarkia
+#' @example cugen()
+#' @seealso dugen(), cugen(), brgen(), bigen(), gegen(), expgen(), gagen(), pogen(), nogen()
+#' related functions: dugen
+
 cugen <- function(){
   return(dugen(0,1))
 }
 
 #section3
+
+#' brgen
+#' 
+#' Bernoulli distribution is one the most simple as well as famous distributions. In each Bernoulli trial there are two possible outcomes, namely success or failure, for the probability of success equal to p, the probability of failure is 1 ??? p.
+#' 
+#' @usage brgen(p)
+#' @param p is the probability
+#' @author Reza Mousapour
+#' @example brgen(0, 2) 
+#' @seealso dugen(), cugen(), gegen(), expgen(), gagen(), pogen(), nogen(), bigen()
+
+
 brgen <- function(p){
   rand = cugen()
   if(rand <= p){
@@ -86,6 +109,18 @@ bigen <-function(p,n){
 }
 
 #section5
+
+#' gegen
+#' 
+#' The number of failures in Bernoulli trials, between two wins, follows the geometric distributions. 
+#' 
+#' @usage gegen(p)
+#' @param p is the probability
+#' @author Reza Mousapour
+#' @example gegen(0, 2)
+#' @seealso dugen(), cugen(), brgen(), bigen(), gegen(), expgen(), gagen(), pogen(), nogen()
+#' related functions: brgen
+
 gegen <- function(p){
   i <- 0
   while(brgen(p = p) != 1){}
@@ -115,6 +150,20 @@ expgen <- function(lambda){
 }
 
 #section7
+
+#' gagen
+#' 
+#' Summation of k i.i.d exponential random variables leads to a gamma distributed random variable. 
+#' 
+#' @usage gagen(theta, k)
+#' @param Theta is a float number as the parameter of the underlying exponential distribution 
+#' @param k is an integer
+#' @author MohammadAmin Salarkia
+#' @example gagen(2, 3)
+#' @seealso dugen(), cugen(), brgen(), bigen(), gegen(), expgen(), gagen(), pogen(), nogen()
+#' related functions: expgen
+
+
 gagen <- function(lambda, k){
   result <- 0
   for (i in 1:k){
@@ -124,6 +173,20 @@ gagen <- function(lambda, k){
 }
 
 #section8
+
+#' pogen
+#' 
+#' If an exponentially distributed variable is modeled as the waiting time before an arrival, the Poisson distributed variable can be modeled as the number of arrivals during a period of time of length t. 
+#' 
+#' @usage pogen(lambda, t)
+#' @param lambda is a float number as the parameter of the underlying exponential distribution
+#' @param t is a float as the length of time interval.
+#' @author MohammadAmin Salarkia
+#' @example pogen(4, 2)
+#' @seealso dugen(), cugen(), brgen(), bigen(), gegen(), expgen(), gagen(), pogen(), nogen() 
+#' related functions: expgen
+
+
 pogen <- function(lambda, t){
   result <- -1
   time <- 0
