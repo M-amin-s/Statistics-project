@@ -1,4 +1,6 @@
 library(ggplot2)
+library("devtools")
+library(roxygen2)
 
 #section1 
 int_to_unit <- function (x, adjustment=2^32) {
@@ -15,6 +17,14 @@ z <- 521288629
 w <- 88675123
 v <- 5783321
 d <- 6615241
+
+
+#' rgenerator
+#' This function gives you a number from 0 to 2^32-1. It uses xorwow algorithm.
+#' 
+#' @usage rgenerator()
+#' @author AmirHossein Motameni
+#' 
 
 rgenerator <- function(){
   
@@ -34,13 +44,13 @@ rgenerator <- function(){
 }
 
 #section2
-  #step2
+#step2
 dugen <- function(min, max){
   result <- abs(rgenerator())
   result <- ((result*(max - min)) / (2**32 - 1)) + min
   return(result)
 }
-  #step3
+#step3
 cugen <- function(){
   return(dugen(0,1))
 }
@@ -56,6 +66,18 @@ brgen <- function(p){
 }
 
 #section4
+
+#' bigen
+#' A binomial random variable can be seen as the result of repeated Bernoulli Trials. This function gives you a number which follows binomial distribution. It uses bernoulli distribution function (bergen (p)) to make binomial numbers.
+#' 
+#' @usage bigen(p, n)
+#' @param p is the probability
+#' @param n is the number of times you want to repeat the bernoulli trial.
+#' @author AmirHossein Motameni
+#' @example bigen(0, 5, 10)
+#' 
+#'
+
 bigen <-function(p,n){
   x <- 0
   for(i in 1:n)
@@ -75,6 +97,17 @@ gegen <- function(p){
 }
 
 #section6
+
+
+#' expgen
+#' Exponential distribution is a popular distribution which is used to model waiting times and memoryless processes. This function gives you a number which follows exponential distribution. It uses uniform distribution function (cugen ()) to make exponential distributed numbers. It is calculated by 1/lambda*log(x).
+#' 
+#' @usage expgen(lambda)
+#' @param lambda
+#' @author Ali Ehteshami
+#' @example expgen(0, 1)
+#' 
+
 expgen <- function(lambda){
   (-1/lambda)*log(cugen())
 }
@@ -100,6 +133,17 @@ pogen <- function(lambda, t){
 }
 
 #section9
+
+#' nogen
+#' This function gives you a number which follows normal distribution. It uses poisson distribution function (pogen (10, 10)) to make normal distributed numbers. It is calculated by (x * sqrt(s) / 10) + ( u - 10 * sqrt(s))
+#' 
+#' @usage nogen(u, s)
+#' @param u is the mean
+#' @param s is the variance
+#' @author Ali Ehteshami
+#' @example nogen(10, 4)
+#' 
+
 nogen <- function(u,s){
   s <- sqrt(s)
   x <- pogen(10,10)
@@ -118,7 +162,7 @@ plotter <- function(func,args){
   if (isTRUE(all.equal(func, bigen)) || isTRUE(all.equal(func, gegen)))
     geom_type <- "histogram"
   plot <- qplot(y, geom =geom_type, fill=I("blue"),col=I("black"),
-        xlim=c(floor(min(y)),ceiling(max(y))))
+                xlim=c(floor(min(y)),ceiling(max(y))))
   print(plot)
   return(plot)
 }
