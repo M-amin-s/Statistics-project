@@ -114,7 +114,10 @@ plotter <- function(func,args){
   for(i in vec)
     y <- c(y,do.call(func,args = args))
   print(qplot(x = vec,y = y))
-  plot <- qplot(y, geom = "density", fill=I("blue"),col=I("black"),
+  geom_type <- "density"
+  if (isTRUE(all.equal(func, bigen)) || isTRUE(all.equal(func, gegen)))
+    geom_type <- "histogram"
+  plot <- qplot(y, geom =geom_type, fill=I("blue"),col=I("black"),
         xlim=c(floor(min(y)),ceiling(max(y))))
   print(plot)
   return(plot)
@@ -173,7 +176,7 @@ find_binomial <- function(string){
   nums <- as.numeric(unlist(strsplit(string, " ")))
   n <- nums[1]
   nums <- nums[2:length(nums)]
-  return(c(mean(nums) / n, 1 - mean(nums) / n)) #P 1-P
+  return(c(mean(nums) / n, 1 - mean(nums) / n, n)) #P 1-P n
 }
 
 find_geometric <- function(string){

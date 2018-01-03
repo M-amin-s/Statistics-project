@@ -17,6 +17,13 @@ server <- function(input, output, session) {
     output$plot <- getPlot(nav_item(), input)
     output$number <- getNumber(nav_item(), input)
   })
+  
+  observeEvent(input$numbersFile, {
+    estimation <- getEstimation(nav_item(), input)
+    output$est_plot <- estimation[[2]]
+    output$est_number <- estimation[[1]]
+    output$estimation <- estimation[[3]]
+  })
 }
 
 ui <- fluidPage(theme=shinytheme("spacelab"),
@@ -42,7 +49,11 @@ ui <- fluidPage(theme=shinytheme("spacelab"),
     mainPanel(
       tabsetPanel(
         tabPanel("Plot", plotOutput("plot") ),
-        tabPanel("Generated Number", uiOutput("number") )
+        tabPanel("Generated Number", uiOutput("number") ),
+        tabPanel("Estimation", mainPanel(
+          fileInput("numbersFile", "Choose file:", accept=c("text/plain")),
+          uiOutput("estimation")
+          ))
       )
     )
   )
