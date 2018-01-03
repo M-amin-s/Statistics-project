@@ -1,6 +1,4 @@
 library(ggplot2)
-library("devtools")
-library(roxygen2)
 
 #section1 
 int_to_unit <- function (x, adjustment=2^32) {
@@ -20,11 +18,12 @@ d <- 6615241
 
 
 #' rgenerator
+#' 
 #' This function gives you a number from 0 to 2^32-1. It uses xorwow algorithm.
 #' 
 #' @usage rgenerator()
 #' @author AmirHossein Motameni
-#' 
+
 
 rgenerator <- function(){
   
@@ -68,6 +67,7 @@ brgen <- function(p){
 #section4
 
 #' bigen
+#' 
 #' A binomial random variable can be seen as the result of repeated Bernoulli Trials. This function gives you a number which follows binomial distribution. It uses bernoulli distribution function (bergen (p)) to make binomial numbers.
 #' 
 #' @usage bigen(p, n)
@@ -76,7 +76,7 @@ brgen <- function(p){
 #' @author AmirHossein Motameni
 #' @example bigen(0, 5, 10)
 #' 
-#'
+#' @seealso dugen(), cugen(), brgen(), gegen(), expgen(), gagen(), pogen(), nogen()
 
 bigen <-function(p,n){
   x <- 0
@@ -100,6 +100,7 @@ gegen <- function(p){
 
 
 #' expgen
+#' 
 #' Exponential distribution is a popular distribution which is used to model waiting times and memoryless processes. This function gives you a number which follows exponential distribution. It uses uniform distribution function (cugen ()) to make exponential distributed numbers. It is calculated by 1/lambda*log(x).
 #' 
 #' @usage expgen(lambda)
@@ -107,6 +108,7 @@ gegen <- function(p){
 #' @author Ali Ehteshami
 #' @example expgen(0, 1)
 #' 
+#' @seealso dugen(), cugen(), brgen(), bigen(), gegen(), gagen(), pogen(), nogen()
 
 expgen <- function(lambda){
   (-1/lambda)*log(cugen())
@@ -135,6 +137,7 @@ pogen <- function(lambda, t){
 #section9
 
 #' nogen
+#' 
 #' This function gives you a number which follows normal distribution. It uses poisson distribution function (pogen (10, 10)) to make normal distributed numbers. It is calculated by (x * sqrt(s) / 10) + ( u - 10 * sqrt(s))
 #' 
 #' @usage nogen(u, s)
@@ -143,6 +146,7 @@ pogen <- function(lambda, t){
 #' @author Ali Ehteshami
 #' @example nogen(10, 4)
 #' 
+#' @seealso dugen(), cugen(), brgen(), bigen(), gegen(), expgen(), gagen(), pogen()
 
 nogen <- function(u,s){
   s <- sqrt(s)
