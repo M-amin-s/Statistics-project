@@ -1,3 +1,6 @@
+For installing package just use below command:
+  devtools::install_github('M-amin-s/Statistics-project/project')
+
 # به نام خدا
 
 ## اعضای گروه:
